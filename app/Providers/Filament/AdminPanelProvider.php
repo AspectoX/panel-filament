@@ -24,15 +24,17 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
+            //->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Zinc,
+                'primary' => Color::Neutral,
             ])
+            ->favicon(asset('favicon/dashboard/favicon.ico'))
             ->viteTheme('resources/css/ax-dash/theme.css')
             ->topNavigation()
+            ->databaseNotifications()
             ->globalSearchKeyBindings(['command+f', 'ctrl+f'])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

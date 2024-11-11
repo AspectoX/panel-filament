@@ -42,14 +42,19 @@
 .fi-theme-switcher {
     @apply bg-neutral-100 dark:bg-neutral-900;
 }
+.fi-input-wrp,
 .ax-input-search-content {
-    @apply flex items-center h-9 ms-auto bg-white/30 dark:bg-white/5 rounded-full transition duration-75;
+    @apply flex items-center h-9 ms-auto bg-white/30 dark:bg-white/5 rounded-full transition duration-75 !important;
 }
+.fi-input,
 .ax-input-search {
     @apply block w-full border-none py-1.5 text-base text-gray-950 transition duration-75 placeholder:text-gray-400 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 sm:text-sm sm:leading-6 bg-white/0 ps-0 pe-3 !important;
 }
 .ax-input-wrp-icon {
     @apply h-5 w-5 text-gray-400 dark:text-gray-500;
+}
+.fi-icon-btn-badge-ctn {
+    @apply left-7;
 }
 .ax-notification {
     @apply inline-block;
@@ -112,6 +117,9 @@
 }
 .ax-content {
     @apply flex flex-col lg:flex-row p-8 gap-4 bg-neutral-100 dark:bg-neutral-800;
+}
+.fi-wi {
+    @apply w-full;
 }
 .ax-content-item {
     @apply w-full;

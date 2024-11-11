@@ -142,5 +142,25 @@
             @endif
         @endif
 
+        <div class="ax-fecha separador-l" x-data="{ currentDate: '' }" x-init="
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const today = new Date();
+                let formattedDate = today.toLocaleDateString('es-ES', options);
+                formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+                currentDate = formattedDate;">
+            <x-filament::icon
+                icon="icon-calendar-alt"
+                class="h-5 w-5"
+            />
+            <p x-text="currentDate"></p>
+        </div>
+        <div class="ax-hora separador-l" x-data="clock()" x-init="init()">
+            <x-filament::icon
+                icon="icon-clock"
+                class="h-5 w-5"
+            />
+            <p x-text="currentTime"></p>
+        </div>
     </nav>
+
 </div>
