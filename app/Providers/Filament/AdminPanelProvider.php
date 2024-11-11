@@ -8,6 +8,7 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Enums\ThemeMode;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -33,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->favicon(asset('favicon/dashboard/favicon.ico'))
             ->viteTheme('resources/css/ax-dash/theme.css')
+            ->globalSearch(true)
             ->topNavigation()
             ->databaseNotifications()
             ->globalSearchKeyBindings(['command+f', 'ctrl+f'])
@@ -46,6 +48,10 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->renderHook(
+                PanelsRenderHook::CONTENT_END,
+                fn () => view('vendor/axDashboard/footer'),
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

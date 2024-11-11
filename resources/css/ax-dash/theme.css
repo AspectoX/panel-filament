@@ -44,7 +44,7 @@
 }
 .fi-input-wrp,
 .ax-input-search-content {
-    @apply flex items-center h-9 ms-auto bg-white/30 dark:bg-white/5 rounded-full transition duration-75 !important;
+    @apply flex items-center h-9 ms-auto bg-white/30 dark:bg-white/5 rounded-full transition duration-75 ring-0 !important;
 }
 .fi-input,
 .ax-input-search {
@@ -145,6 +145,9 @@ button.ax-card-tool-btn > svg {
 .ax-card-footer {
     @apply flex h-auto items-center justify-between border-t border-neutral-200 dark:border-neutral-800 overflow-hidden;
 }
+.fi-section {
+    @apply ring-0 !important;
+}
 
 /* Footer */
 .ax-footer {
@@ -166,4 +169,8 @@ button.ax-card-tool-btn > svg {
 }
 .ax-footer-lista li {
     @apply block lg:inline-block;
+}
+
+.fi-btn {
+    @apply ring-0 !important;
 }
