@@ -1,0 +1,161 @@
+@import "/vendor/filament/filament/resources/css/theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@config 'tailwind.config.js';
+
+@layer base {
+    html {
+        font-family: "Lato", "Roboto", "Open Sans", sans-serif;
+    }
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+    }
+}
+.separador-r {
+    @apply h-16 px-8 border-r-8 border-neutral-100 dark:border-neutral-800;
+}
+.separador-l {
+    @apply h-16 px-8 border-l-8 border-neutral-100 dark:border-neutral-800;
+}
+
+.wrapper {
+    @apply h-screen bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-400;
+}
+.ax-header,
+.ax-nav,
+.ax-title-section {
+    @apply flex h-16 w-full px-8 mb-6 items-center justify-between bg-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-400;
+}
+.ax-header-left {
+    @apply flex items-center text-xl font-extrabold italic text-neutral-800 dark:text-neutral-400;
+}
+.ax-header-medium,
+.ax-header-right {
+    @apply flex w-auto;
+}
+.ax-header-right {
+    @apply ms-auto flex items-center gap-x-4;
+}
+.fi-theme-switcher {
+    @apply bg-neutral-100 dark:bg-neutral-900;
+}
+.ax-input-search-content {
+    @apply flex items-center h-9 ms-auto bg-white/30 dark:bg-white/5 rounded-full transition duration-75;
+}
+.ax-input-search {
+    @apply block w-full border-none py-1.5 text-base text-gray-950 transition duration-75 placeholder:text-gray-400 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 sm:text-sm sm:leading-6 bg-white/0 ps-0 pe-3 !important;
+}
+.ax-input-wrp-icon {
+    @apply h-5 w-5 text-gray-400 dark:text-gray-500;
+}
+.ax-notification {
+    @apply inline-block;
+}
+.ax-notification svg {
+    @apply h-6 w-6;
+}
+
+/* Top Menu */
+.ax-topbar {
+    @apply z-0 !important;
+}
+.ax-nav {
+    @apply py-0 px-16 z-0;
+}
+.ax-nav-ul {
+    @apply h-16 pl-0 items-center inline-flex;
+}
+
+.ax-nav-item {
+    @apply flex relative items-center justify-center overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-teal-400 dark:before:bg-teal-800 before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56;
+}
+.ax-nav-item-link {
+    @apply relative pb-[18px] pt-5 px-[20px] border-b-4 border-neutral-200 dark:border-neutral-900 hover:border-red-400 dark:hover:border-red-800 z-10;
+}
+.ax-nav-item.fi-active > .ax-nav-item-link {
+    @apply border-neutral-400 dark:border-neutral-800 hover:border-red-400 dark:hover:border-red-500;
+}
+.ax-nav-item.fi-active {
+    @apply border-neutral-300 hover:border-red-400 bg-neutral-300 dark:bg-neutral-800 !important;
+}
+
+/* Titulo seccion */
+.ax-title-section {
+    @apply px-16 justify-normal z-0 !important;
+}
+.ax-title-section h3 {
+    @apply flex items-center pl-0 text-2xl font-bold;
+}
+.ax-title-section > svg {
+    @apply h-6 w-6 mr-4;
+}
+
+/* Fecha y hora */
+.ax-hora,
+.ax-fecha {
+    @apply w-auto inline-flex items-center;
+}
+.ax-fecha {
+    @apply ml-auto;
+}
+.ax-hora > svg,
+.ax-fecha > svg {
+    @apply h-6 w-6 mr-4;
+}
+
+/* Main */
+.ax-main {
+    @apply px-16 py-8 mb-6 bg-neutral-200 dark:bg-neutral-900;
+}
+.ax-content {
+    @apply flex flex-col lg:flex-row p-8 gap-4 bg-neutral-100 dark:bg-neutral-800;
+}
+.ax-content-item {
+    @apply w-full;
+}
+.ax-card {
+    @apply block w-full bg-white dark:bg-neutral-700 rounded-lg shadow-sm;
+}
+.ax-card-header {
+    @apply flex h-auto items-center justify-between px-8 py-4 border-b border-neutral-200 dark:border-neutral-800;
+}
+.ax-card-header h5 {
+    @apply text-lg font-bold;
+}
+button.ax-card-tool-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-600;
+}
+button.ax-card-tool-btn > svg {
+    @apply h-5 w-5 px-1;
+}
+.ax-card-content {
+    @apply h-auto overflow-hidden;
+}
+.ax-card-footer {
+    @apply flex h-auto items-center justify-between border-t border-neutral-200 dark:border-neutral-800 overflow-hidden;
+}
+
+/* Footer */
+.ax-footer {
+    @apply w-full h-auto px-16 flex flex-col lg:flex-row gap-x-4 bg-neutral-200 dark:bg-neutral-900;
+}
+.ax-footer-left,
+.ax-footer-medium,
+.ax-footer-right {
+    @apply flex flex-row lg:flex-col h-auto w-full p-6 items-center justify-center;
+}
+.ax-footer-left h4,
+.ax-footer-medium h4,
+.ax-footer-right h4 {
+    @apply flex justify-center w-full text-xs font-light uppercase pb-6;
+}
+
+.ax-footer-lista {
+    @apply flex lg:inline-flex w-full justify-center;
+}
+.ax-footer-lista li {
+    @apply block lg:inline-block;
+}
