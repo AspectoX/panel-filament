@@ -85,13 +85,5 @@ return [
     */
 
     'livewire_loading_delay' => 'default',
-    'global_search' => [
-        'enabled' => true,
-        // Otras configuraciones de búsqueda global...
-    ],
-    'database_notifications' => [
-        'enabled' => true,
-        'lazy_load' => true,
-        'polling_interval' => '30s',
-    ],
+
 ];

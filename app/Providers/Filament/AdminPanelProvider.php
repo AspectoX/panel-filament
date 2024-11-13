@@ -19,6 +19,8 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
+use App\Filament\Pages\Backups;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -52,6 +54,7 @@ class AdminPanelProvider extends PanelProvider
                 PanelsRenderHook::CONTENT_END,
                 fn () => view('vendor/axDashboard/footer'),
             )
+            ->plugin(FilamentSpatieLaravelBackupPlugin::make()->usingPage(Backups::class))
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

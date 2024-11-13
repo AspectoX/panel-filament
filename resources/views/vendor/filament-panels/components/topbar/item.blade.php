@@ -27,7 +27,8 @@
             type="button"
         @endif
         @class([
-            'fi-topbar-item-button ax-nav-item-link flex items-center justify-center gap-x-2 outline-none' => $active,
+            'fi-topbar-item-button ax-nav-item-link flex items-center justify-center gap-x-2 outline-none',
+            '' => $active,
         ])
     >
         @if ($icon || $activeIcon)

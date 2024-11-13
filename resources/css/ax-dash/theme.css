@@ -71,20 +71,21 @@
     @apply py-0 px-16 z-0;
 }
 .ax-nav-ul {
-    @apply h-16 pl-0 items-center inline-flex;
+    @apply w-auto h-16 pl-0 items-center inline-flex;
 }
 
+.fi-dropdown,
 .ax-nav-item {
-    @apply flex relative items-center justify-center overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-teal-400 dark:before:bg-teal-800 before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56;
+    @apply flex relative items-center justify-center overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-neutral-400/50 dark:before:bg-neutral-900/50 before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56;
 }
 .ax-nav-item-link {
-    @apply relative pb-[18px] pt-5 px-[20px] border-b-4 border-neutral-200 dark:border-neutral-900 hover:border-red-400 dark:hover:border-red-800 z-10;
+    @apply relative pb-[18px] pt-5 px-[20px] border-b-4 border-neutral-200 dark:border-neutral-900 hover:border-red-400 dark:hover:border-red-600 z-10;
 }
 .ax-nav-item.fi-active > .ax-nav-item-link {
-    @apply border-neutral-400 dark:border-neutral-800 hover:border-red-400 dark:hover:border-red-500;
+    @apply border-neutral-300 dark:border-neutral-800 hover:border-red-400 dark:hover:border-red-600;
 }
 .ax-nav-item.fi-active {
-    @apply border-neutral-300 hover:border-red-400 bg-neutral-300 dark:bg-neutral-800 !important;
+    @apply border-neutral-300 hover:border-red-400 dark:hover:border-red-600 bg-neutral-300 dark:bg-neutral-800 !important;
 }
 
 /* Titulo seccion */
@@ -116,7 +117,10 @@
     @apply px-16 py-8 mb-6 bg-neutral-200 dark:bg-neutral-900;
 }
 .ax-content {
-    @apply flex flex-col lg:flex-row p-8 gap-4 bg-neutral-100 dark:bg-neutral-800;
+    @apply flex w-full flex-col lg:flex-row p-8 gap-4 bg-neutral-100 dark:bg-neutral-800;
+}
+.ax-content > div {
+    @apply w-full;
 }
 .fi-wi {
     @apply w-full;
@@ -171,6 +175,7 @@ button.ax-card-tool-btn > svg {
     @apply block lg:inline-block;
 }
 
+/* Varios */
 .fi-btn {
     @apply ring-0 !important;
 }
