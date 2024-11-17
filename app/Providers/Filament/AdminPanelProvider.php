@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Enums\ThemeMode;
+use App\Filament\Pages\Backups;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
 use Filament\Http\Middleware\Authenticate;
@@ -20,7 +21,6 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
-use App\Filament\Pages\Backups;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -36,10 +36,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->favicon(asset('favicon/dashboard/favicon.ico'))
             ->viteTheme('resources/css/ax-dash/theme.css')
-            ->globalSearch(true)
+            ->brandLogo(asset('images/logo-axdash-min.png'))
             ->topNavigation()
             ->databaseNotifications()
-            ->globalSearchKeyBindings(['command+f', 'ctrl+f'])
+            //->globalSearchKeyBindings(['command+f', 'ctrl+f'])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

@@ -3,15 +3,21 @@
 namespace App\Filament\Pages;
 
 use Illuminate\Contracts\Support\Htmlable;
+use App\Filament\Pages\Concerns\HasHeadingIcon;
 use ShuvroRoy\FilamentSpatieLaravelBackup\Pages\Backups as BaseBackups;
 
 class Backups extends BaseBackups
 {
-    protected static ?string $navigationIcon = 'icon-tools';
+    use HasHeadingIcon;
 
-    public function getHeading(): string | Htmlable
+    protected static ?string $navigationIcon = 'icon-database-backup';
+
+    public function getHeading(): string
     {
-        return 'Application Backups';
+        return $this->getHeadingWithIcon(
+            heading: 'Backups',
+            icon: 'icon-database-backup',
+        );
     }
 
     public static function getNavigationGroup(): ?string

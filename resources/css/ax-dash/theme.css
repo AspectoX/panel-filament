@@ -39,6 +39,15 @@
 .ax-header-right {
     @apply ms-auto flex items-center gap-x-4;
 }
+.fi-logo {
+    /* @apply h-[2.25rem] w-auto !important; */
+}
+.fi-topbar-open-sidebar-btn {
+    @apply mr-4;
+}
+.fi-dropdown-trigger > button {
+    @apply cursor-pointer !important;
+}
 .fi-theme-switcher {
     @apply bg-neutral-100 dark:bg-neutral-900;
 }
@@ -74,9 +83,11 @@
     @apply w-auto h-16 pl-0 items-center inline-flex;
 }
 
-.fi-dropdown,
+.fi-dropdown {
+    @apply relative !important;
+}
 .ax-nav-item {
-    @apply flex relative items-center justify-center overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-neutral-400/50 dark:before:bg-neutral-900/50 before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56;
+    @apply flex relative items-center justify-center overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-neutral-400/50 dark:before:bg-neutral-700/50 before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56;
 }
 .ax-nav-item-link {
     @apply relative pb-[18px] pt-5 px-[20px] border-b-4 border-neutral-200 dark:border-neutral-900 hover:border-red-400 dark:hover:border-red-600 z-10;
@@ -90,7 +101,7 @@
 
 /* Titulo seccion */
 .ax-title-section {
-    @apply px-16 justify-normal z-0 !important;
+    @apply px-16 justify-between z-0 !important;
 }
 .ax-title-section h3 {
     @apply flex items-center pl-0 text-2xl font-bold;
@@ -150,7 +161,7 @@ button.ax-card-tool-btn > svg {
     @apply flex h-auto items-center justify-between border-t border-neutral-200 dark:border-neutral-800 overflow-hidden;
 }
 .fi-section {
-    @apply ring-0 !important;
+    @apply ring-0 shadow-md dark:shadow-md border border-neutral-300 dark:border-neutral-950 !important;
 }
 
 /* Footer */

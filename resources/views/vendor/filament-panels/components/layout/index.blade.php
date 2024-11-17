@@ -9,11 +9,9 @@
 @endphp
 
 <x-filament-panels::layout.base :livewire="$livewire">
-    {{-- The sidebar is after the page content in the markup to fix issues with page content overlapping dropdown content from the sidebar. --}}
-
-    <div class="wrapper">
-        <header class="ax-header">
-            <div class="ax-header-left separador-r">
+	<div class="wrapper">
+		<header class="ax-header">
+			<div class="ax-header-left separador-r">
                 @if ($homeUrl = filament()->getHomeUrl())
                     <a {{ \Filament\Support\generate_href_html($homeUrl) }}>
                         <x-filament-panels::logo />
@@ -22,7 +20,9 @@
                     <x-filament-panels::logo />
                 @endif
             </div>
-            <!-- <div class="ax-header-medium separador-r"></div> -->
+
+			<!-- <div class="ax-header-medium separador-r"></div> -->
+
             <div class="ax-header-right separador-l">
                 <div
                     x-persist="topbar.end"
@@ -38,7 +38,8 @@
                     {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER) }}
 
                     @if (filament()->auth()->check())
-                        @if (true) {{-- filament()->hasDatabaseNotifications() --}}
+                        {{--  filament()->hasDatabaseNotifications() --}}
+                        @if (true)
                             @livewire(Filament\Livewire\DatabaseNotifications::class, [
                                 'lazy' => filament()->hasLazyLoadedDatabaseNotifications(),
                             ])
@@ -50,7 +51,7 @@
                     {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_END) }}
                 </div>
             </div>
-        </header>
+		</header>
 
         @if (filament()->hasTopbar())
             {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_BEFORE, scopes: $livewire->getRenderHookScopes()) }}
@@ -59,17 +60,73 @@
 
             {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_AFTER, scopes: $livewire->getRenderHookScopes()) }}
         @endif
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::CONTENT_START, scopes: $livewire->getRenderHookScopes()) }}
-            <main
-                @class([
-                    'fi-main w-full',
-                ])
-            >
 
-                {{ $slot }}
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::CONTENT_START, scopes: $livewire->getRenderHookScopes()) }}
+        <main
+            @class([
+                'fi-main w-full',
+            ])
+        >
 
-            </main>
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::CONTENT_END, scopes: $livewire->getRenderHookScopes()) }}
+            {{ $slot }}
 
-    </div>
+        </main>
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::CONTENT_END, scopes: $livewire->getRenderHookScopes()) }}
+
+        @if (filament()->hasNavigation())
+            <div
+                x-cloak
+                x-data="{}"
+                x-on:click="$store.sidebar.close()"
+                x-show="$store.sidebar.isOpen"
+                x-transition.opacity.300ms
+                class="fixed inset-0 z-30 transition duration-500 fi-sidebar-close-overlay bg-gray-950/50 dark:bg-gray-950/75 lg:hidden"
+            ></div>
+
+            <x-filament-panels::sidebar
+                :navigation="$navigation"
+                class="fi-main-sidebar"
+            />
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(() => {
+                        let activeSidebarItem = document.querySelector(
+                            '.fi-main-sidebar .fi-sidebar-item.fi-active',
+                        )
+
+                        if (
+                            !activeSidebarItem ||
+                            activeSidebarItem.offsetParent === null
+                        ) {
+                            activeSidebarItem = document.querySelector(
+                                '.fi-main-sidebar .fi-sidebar-group.fi-active',
+                            )
+                        }
+
+                        if (
+                            !activeSidebarItem ||
+                            activeSidebarItem.offsetParent === null
+                        ) {
+                            return
+                        }
+
+                        const sidebarWrapper = document.querySelector(
+                            '.fi-main-sidebar .fi-sidebar-nav',
+                        )
+
+                        if (!sidebarWrapper) {
+                            return
+                        }
+
+                        sidebarWrapper.scrollTo(
+                            0,
+                            activeSidebarItem.offsetTop -
+                                window.innerHeight / 2,
+                        )
+                    }, 10)
+                })
+            </script>
+        @endif
+	</div>
 </x-filament-panels::layout.base>
